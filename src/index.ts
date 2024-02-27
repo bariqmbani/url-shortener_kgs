@@ -2,15 +2,17 @@ import { connect } from "./db/db-connection";
 import { UniqueKey } from "./db/schema/UniqueKey";
 import { generateAndUseUniqueKey, generateUniqueKeyJob } from "./key-generation";
 import RabbitMQ from "./mq/RabbitMQ";
-import http from "http";
 
-connect().then(() => {
-  console.log("Connected to MongoDB");
-});
+export const app = async () => {
+  try {
+    await connect();
+    generateUniqueKeyJob.start();
+    console.info("Connected to MongoDB");
+  } catch (error) {
+    console.error("Failed to connect to MongoDB", error);
+    process.exit(1);
+  }
 
-generateUniqueKeyJob.start();
-
-const app = async () => {
   const mq = new RabbitMQ();
   await mq.connect();
 
@@ -26,8 +28,4 @@ const app = async () => {
   });
 };
 
-const HTTP_PORT = process.env.PORT || 4001;
-http.createServer().listen(HTTP_PORT, () => {
-  app();
-  console.log(`Server is running on port ${HTTP_PORT}`);
-});
+app();

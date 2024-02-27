@@ -3,3 +3,6 @@ dist/
 
 *.log
 .env
+
+# Local Netlify folder
+.netlify

@@ -7,7 +7,8 @@
     "esModuleInterop": true // If you're using import syntax in your code
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "netlify/functions"
   ],
   "exclude": [
     "node_modules",

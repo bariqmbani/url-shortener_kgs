@@ -43,6 +43,8 @@ export const generateUniqueKeyJob = new CronJob(
 
     const keyToGenerate = MAX_KEY_TO_GENERATE - unusedKeyCount;
 
+    console.log(`Unused key count: ${unusedKeyCount}`);
+
     if (keyToGenerate <= 0) {
       return;
     }
