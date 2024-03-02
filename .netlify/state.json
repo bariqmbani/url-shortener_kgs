@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Bandung",
+			"country": {
+				"code": "ID",
+				"name": "Indonesia"
+			},
+			"subdivision": {
+				"code": "JB",
+				"name": "West Java"
+			},
+			"timezone": "Asia/Jakarta",
+			"latitude": -6.9217,
+			"longitude": 107.6071
+		},
+		"timestamp": 1709060450901
+	}
+}
