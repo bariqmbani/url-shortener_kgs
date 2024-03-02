@@ -1,8 +1,11 @@
 import { CronJob } from "cron";
 import { UniqueKey } from "./db/schema/UniqueKey";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const MAX_KEY_TO_GENERATE = parseInt(process.env.MAX_KEY_TO_GENERATE!) || 10;
-const KEY_CHARACTERS = process.env.KEY_CHARACTERS || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const KEY_CHARACTERS = process.env.KEY_CHARACTERS! || "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const KEY_LENGTH = parseInt(process.env.KEY_LENGTH!) || 6;
 
 export const generateRandomKey = (length: number = KEY_LENGTH) => {
